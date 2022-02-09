@@ -1,1 +1,1 @@
-# learning-by-teaching
+# Neural Architecture Search for Pneumonia Diagnosis
