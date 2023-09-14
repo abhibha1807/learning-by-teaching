@@ -8,6 +8,9 @@ Pneumonia is one of the diseases that causes the most fatalities worldwide, espe
 
 ## How to run code
 
+- Step 1: Run DHE.py on the dataset to generate augmented training dataset. ` run DHE.py `
+- Step 2: Perform architecture search ` run arch_search.py `
+- Step 3: Train on downstream task i.e Pneumonia detection ` run train.py `
 
 ## Dataset
 
