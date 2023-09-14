@@ -5,6 +5,7 @@ import imageio
 import scipy, scipy.misc, scipy.signal
 import cv2
 import sys
+import os
 from os import listdir
 from os.path import isfile, join
 def build_is_hist(img):
@@ -102,19 +103,29 @@ def dhe(img, alpha=0.5):
     result[result<0] = 0
     return result.astype(np.uint8)
 
+def list_files(directory):
+    img = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            img.append(os.path.join(root, file))
+
 def main():
-       
-    img_name = '/Users/abhibhagupta/Desktop/ucsd/lbt/data/train/NORMAL/NORMAL2-IM-1271-0001.jpeg'
-    img = imageio.imread(img_name)
-    img_ = cv2.imread(img_name)
-    l=img.shape[0]
-    w=img.shape[1]
-    
-    img = img_.reshape(l,w,3)
-    print(img.shape)
-    result = dhe(img)
-    plt.imshow(result)
-    plt.show()
+        
+    # Specify the directory you want to iterate through
+    directory_path = "./images/"
+    save_directory_path = "./dhe_images/"
+    image_list = list_files(directory_path)
+    for i in image_list:
+        img_name = '.jpeg'
+        img = imageio.imread(img_name)
+        img_ = cv2.imread(img_name)
+        l=img.shape[0]
+        w=img.shape[1]
+        
+        img = img_.reshape(l,w,3)
+        result = dhe(img)
+        plt.show()
+        plt.savefig(save_directory_path)
     
        
 
